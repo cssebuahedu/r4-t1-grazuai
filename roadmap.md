@@ -48,3 +48,8 @@
 - [x] Add centralized demo roles, one switcher, and consistent navigation/access simulation.
 - [x] Add Customer Service placeholder for admin and superadmin.
 - [x] Verify permission rules, navigation, and existing assistant interactions.
+
+# Unified AI Bot + Human CS Chat Foundation
+- [ ] Unify typed conversations, sender identities, statuses, and shared local state.
+- [ ] Update existing chat presentation and preserve page/drawer history.
+- [ ] Test title limits, human/closed behavior, and existing demo replies.
