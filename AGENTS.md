@@ -19,3 +19,4 @@
 - Keep compliance and review state in a React provider around the `/app` shell, linking evidence by existing product, run, test, and repository IDs; this preserves local edits across navigation without persistence or duplicated product records.
 - Keep public sign-in and sign-up routes outside the `/app` shell and share their presentation in one component; this isolates account screens without altering module navigation or introducing authentication guards.
 - Derive analytics, geospatial, and forecast views from the shared use case registry plus explicitly labeled simulation helpers in one module; this keeps totals consistent across pages and avoids duplicate fixtures.
+- Centralize demo role state and module permissions in a React provider around the app shell; sidebar filtering and route presentation share the same rules without implying real authorization or changing demo data ownership.
