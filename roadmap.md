@@ -44,7 +44,7 @@
 - [x] Public /explore, /knowledge, /knowledge/:slug
 
 # Role Foundation & Navigation Cleanup
-- [ ] Replace duplicate consultation page with compatibility redirect.
-- [ ] Add centralized demo roles, one switcher, and consistent navigation/access simulation.
-- [ ] Add Customer Service placeholder for admin and superadmin.
-- [ ] Verify permission rules, navigation, and existing assistant interactions.
+- [x] Replace duplicate consultation page with compatibility redirect.
+- [x] Add centralized demo roles, one switcher, and consistent navigation/access simulation.
+- [x] Add Customer Service placeholder for admin and superadmin.
+- [x] Verify permission rules, navigation, and existing assistant interactions.
