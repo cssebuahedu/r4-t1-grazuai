@@ -16,8 +16,65 @@ export const suggestedQuestions = [
   "Bagaimana cara mendaftarkan use case AI?",
 ];
 
-export interface ChatMsg { id: string; role: "user" | "assistant"; text: string; time: string; refs?: string[] }
-export interface Conversation { id: string; title: string; group: "Hari Ini" | "Kemarin" | "Sebelumnya"; messages: ChatMsg[] }
+export type SenderType = "client" | "guest" | "ai" | "cs" | "system";
+export type ConversationStatus = "AI_ACTIVE" | "HUMAN_ACTIVE" | "CLOSED";
+export interface ChatMsg {
+  id: string;
+  conversationId: string;
+  senderType: SenderType;
+  senderId: string;
+  senderName: string;
+  content: string;
+  timestamp: string;
+  refs?: string[];
+}
+export interface Conversation {
+  id: string;
+  title: string;
+  participantId: string;
+  participantType: "guest" | "client";
+  productId?: string | null;
+  status: ConversationStatus;
+  assignedCsId?: string;
+  messages: ChatMsg[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export const demoCs = [
+  { id: "cs-ayulia", name: "Ayulia Ningsih" },
+  { id: "cs-rizky", name: "Rizky Pratama" },
+] as const;
+export const demoParticipant = { id: "client-demo", name: "Anisa Putri" };
+
+export function conversationTitle(content: string): string {
+  return content.trim().split(/\s+/).filter(Boolean).slice(0, 6).join(" ") || "Percakapan Baru";
+}
+
+export function senderLabel(message: ChatMsg, view: "client" | "cs" = "client"): string {
+  if (message.senderType === "ai") return "GRAZU - AI Bot";
+  if (message.senderType === "cs") return `GRAZU - CS ${message.senderName}`;
+  if (message.senderType === "system") return "Sistem";
+  return view === "client" ? "Anda" : message.senderName;
+}
+
+export function sessionStatus(conversation?: Conversation): string {
+  if (conversation?.status === "CLOSED") return "Percakapan Ditutup";
+  if (conversation?.status === "HUMAN_ACTIVE") {
+    const cs = demoCs.find((person) => person.id === conversation.assignedCsId);
+    return `Ditangani CS — ${cs?.name ?? "Petugas Layanan"}`;
+  }
+  return "Ditangani AI Bot";
+}
+
+export function conversationGroup(conversation: Conversation, now = new Date()): "Hari Ini" | "Kemarin" | "Sebelumnya" {
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const created = new Date(conversation.createdAt);
+  const day = new Date(created.getFullYear(), created.getMonth(), created.getDate());
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  return day >= today ? "Hari Ini" : day >= yesterday ? "Kemarin" : "Sebelumnya";
+}
 
 export interface AssistantContext {
   product: UseCase;
