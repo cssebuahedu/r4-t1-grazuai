@@ -14,6 +14,7 @@ import {
   ClipboardCheck,
   Files,
   Settings,
+  Headset,
 } from "lucide-react";
 
 export const navigationGroups = [
@@ -108,10 +109,10 @@ export const navigationGroups = [
         description: "Pendamping tata kelola kecerdasan artifisial organisasi.",
       },
       {
-        title: "AI Consultation",
-        path: "/app/ai-consultation",
-        icon: MessagesSquare,
-        description: "Konsultasi tata kelola dan penerapan AI yang bertanggung jawab.",
+        title: "Layanan Pelanggan",
+        path: "/app/support/inbox",
+        icon: Headset,
+        description: "Kelola percakapan pengguna dan bantuan langsung oleh Customer Service.",
       },
       {
         title: "Review & Audit",

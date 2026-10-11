@@ -42,3 +42,9 @@
 - [x] Policy intelligence page with filters, drawer, quick wins, references
 - [x] Reports center with templates, config, preview, CSV export
 - [x] Public /explore, /knowledge, /knowledge/:slug
+
+# Role Foundation & Navigation Cleanup
+- [x] Replace duplicate consultation page with compatibility redirect.
+- [x] Add centralized demo roles, one switcher, and consistent navigation/access simulation.
+- [x] Add Customer Service placeholder for admin and superadmin.
+- [x] Verify permission rules, navigation, and existing assistant interactions.

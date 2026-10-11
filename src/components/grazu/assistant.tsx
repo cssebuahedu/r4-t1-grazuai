@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Copy, Pencil, Plus, SendHorizonal, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { assistantActions, demoLabel, demoRole, suggestedQuestions, useAssistant, type AssistantContext, type ChatMsg } from "@/lib/assistant";
+import { assistantActions, demoLabel, suggestedQuestions, useAssistant, type AssistantContext, type ChatMsg } from "@/lib/assistant";
+import { demoRoles, useDemoRole } from "@/lib/demo-roles";
 import { useUseCases } from "@/lib/use-cases";
 import { findings, useRepos } from "@/lib/devsecops";
 import { assessmentStatus, controls, useCompliance } from "@/lib/compliance";
@@ -37,11 +38,12 @@ export function ProductSwitcher({ id = "assistant-product" }: { id?: string }) {
 }
 
 export function ContextPanel() {
+  const { role } = useDemoRole();
   const ctx = useAssistantContext();
   const p = ctx.product;
   const open = ctx.findings.filter((f) => f.status !== "Diperbaiki").length;
   const rows: [string, string][] = [
-    ["Organisasi aktif", p.org], ["Peran pengguna", demoRole], ["Sektor", p.sector],
+    ["Organisasi aktif", p.org], ["Peran pengguna", demoRoles[role].label], ["Sektor", p.sector],
     ["Risiko awal", p.risk], ["Temuan keamanan terbuka", String(open)],
     ["Status assessment", ctx.assessment?.status ?? "Belum ada assessment"],
   ];

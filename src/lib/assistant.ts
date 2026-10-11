@@ -6,7 +6,6 @@ export const demoLabel = "MODE DEMO — Respons chatbot merupakan simulasi.";
 export const unsupportedReply =
   "Pertanyaan ini belum didukung dalam mode demonstrasi. Kemampuan konsultasi lebih lanjut akan tersedia setelah integrasi AI.";
 export const noAssessmentReply = "Belum ada hasil assessment untuk produk ini.";
-export const demoRole = "Administrator";
 
 export const suggestedQuestions = [
   "Apa saja sembilan nilai etika AI di Indonesia?",

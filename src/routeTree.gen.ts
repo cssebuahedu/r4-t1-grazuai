@@ -36,6 +36,7 @@ import { Route as AppAnalyticsGeospatialRouteImport } from './routes/app.analyti
 import { Route as AppComplianceIndexRouteImport } from './routes/app.compliance.index'
 import { Route as AppDevsecopsIndexRouteImport } from './routes/app.devsecops.index'
 import { Route as AppRedTeamingIndexRouteImport } from './routes/app.red-teaming.index'
+import { Route as AppSupportInboxRouteImport } from './routes/app.support.inbox'
 import { Route as AppUseCasesIndexRouteImport } from './routes/app.use-cases.index'
 import { Route as AppUseCasesIdRouteImport } from './routes/app.use-cases.$id'
 import { Route as AppUseCasesNewRouteImport } from './routes/app.use-cases.new'
@@ -178,6 +179,11 @@ const AppRedTeamingIndexRoute = AppRedTeamingIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRedTeamingRoute,
 } as any)
+const AppSupportInboxRoute = AppSupportInboxRouteImport.update({
+  id: '/support/inbox',
+  path: '/support/inbox',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppUseCasesIndexRoute = AppUseCasesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/app/analytics/adoption': typeof AppAnalyticsAdoptionRoute
   '/app/analytics/forecast': typeof AppAnalyticsForecastRoute
   '/app/analytics/geospatial': typeof AppAnalyticsGeospatialRoute
+  '/app/support/inbox': typeof AppSupportInboxRoute
   '/app/use-cases/$id': typeof AppUseCasesIdRoute
   '/app/use-cases/new': typeof AppUseCasesNewRoute
   '/app/compliance/': typeof AppComplianceIndexRoute
@@ -265,6 +272,7 @@ export interface FileRoutesByTo {
   '/app/analytics/adoption': typeof AppAnalyticsAdoptionRoute
   '/app/analytics/forecast': typeof AppAnalyticsForecastRoute
   '/app/analytics/geospatial': typeof AppAnalyticsGeospatialRoute
+  '/app/support/inbox': typeof AppSupportInboxRoute
   '/app/use-cases/$id': typeof AppUseCasesIdRoute
   '/app/use-cases/new': typeof AppUseCasesNewRoute
   '/app/compliance': typeof AppComplianceIndexRoute
@@ -301,6 +309,7 @@ export interface FileRoutesById {
   '/app/analytics/adoption': typeof AppAnalyticsAdoptionRoute
   '/app/analytics/forecast': typeof AppAnalyticsForecastRoute
   '/app/analytics/geospatial': typeof AppAnalyticsGeospatialRoute
+  '/app/support/inbox': typeof AppSupportInboxRoute
   '/app/use-cases/$id': typeof AppUseCasesIdRoute
   '/app/use-cases/new': typeof AppUseCasesNewRoute
   '/app/compliance/': typeof AppComplianceIndexRoute
@@ -338,6 +347,7 @@ export interface FileRouteTypes {
     | '/app/analytics/adoption'
     | '/app/analytics/forecast'
     | '/app/analytics/geospatial'
+    | '/app/support/inbox'
     | '/app/use-cases/$id'
     | '/app/use-cases/new'
     | '/app/compliance/'
@@ -367,6 +377,7 @@ export interface FileRouteTypes {
     | '/app/analytics/adoption'
     | '/app/analytics/forecast'
     | '/app/analytics/geospatial'
+    | '/app/support/inbox'
     | '/app/use-cases/$id'
     | '/app/use-cases/new'
     | '/app/compliance'
@@ -402,6 +413,7 @@ export interface FileRouteTypes {
     | '/app/analytics/adoption'
     | '/app/analytics/forecast'
     | '/app/analytics/geospatial'
+    | '/app/support/inbox'
     | '/app/use-cases/$id'
     | '/app/use-cases/new'
     | '/app/compliance/'
@@ -613,6 +625,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRedTeamingIndexRouteImport
       parentRoute: typeof AppRedTeamingRoute
     }
+    '/app/support/inbox': {
+      id: '/app/support/inbox'
+      path: '/support/inbox'
+      fullPath: '/app/support/inbox'
+      preLoaderRoute: typeof AppSupportInboxRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/use-cases/': {
       id: '/app/use-cases/'
       path: '/'
@@ -733,6 +752,7 @@ interface AppRouteChildren {
   AppAnalyticsAdoptionRoute: typeof AppAnalyticsAdoptionRoute
   AppAnalyticsForecastRoute: typeof AppAnalyticsForecastRoute
   AppAnalyticsGeospatialRoute: typeof AppAnalyticsGeospatialRoute
+  AppSupportInboxRoute: typeof AppSupportInboxRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -752,6 +772,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsAdoptionRoute: AppAnalyticsAdoptionRoute,
   AppAnalyticsForecastRoute: AppAnalyticsForecastRoute,
   AppAnalyticsGeospatialRoute: AppAnalyticsGeospatialRoute,
+  AppSupportInboxRoute: AppSupportInboxRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
