@@ -35,8 +35,8 @@ export function AppShell() {
                   to={item.path}
                   activeOptions={{ exact: true }}
                   className="nav-item"
-                  data-active={path === item.path}
-                  aria-current={path === item.path ? "page" : undefined}
+                  data-active={current?.path === item.path}
+                  aria-current={current?.path === item.path ? "page" : undefined}
                   title={compact ? item.title : undefined}
                   onClick={() => setDrawer(false)}
                 >
@@ -104,9 +104,9 @@ export function AppShell() {
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-3 md:gap-5">
-            <div className="hidden w-48 items-center gap-2 rounded-md border bg-background px-3 py-2 text-xs text-muted-foreground xl:flex">
+            <div aria-disabled="true" title="Pencarian global belum tersedia dalam mode demo" className="hidden w-48 cursor-not-allowed items-center gap-2 rounded-md border bg-background px-3 py-2 text-xs text-muted-foreground opacity-70 xl:flex">
               <Search size={14} />
-              <span>Cari di platform...</span>
+              <span>Pencarian (segera hadir)</span>
             </div>
             <AssistantDrawerButton />
             <span className="hidden rounded border border-primary/20 bg-accent px-2 py-1 text-[9px] sm:inline font-semibold tracking-wider text-primary">
@@ -133,6 +133,7 @@ export function AppShell() {
             </div>
           </div>
         </header>
+        <p role="note" className="border-b bg-accent px-4 py-1.5 text-center text-[11px] font-medium text-primary md:px-8">MODE DEMO — Data dan hasil penilaian merupakan simulasi.</p>
         <main className="mx-auto max-w-[1500px] px-4 py-7 md:px-8 md:py-8">
           <Outlet />
         </main>
